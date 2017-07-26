@@ -1,0 +1,203 @@
+
+section > h1{
+    font-family: 'Dancing Script', cursive;
+}
+video{
+     height:770px;
+     bottom:0%;
+     margin:0px;
+     padding:0px;
+}
+.content{
+    font-family: 'Bellefair', serif;
+    width:100%;
+    height:770px;
+    z-index: 1000;
+    background-color:rgba(0, 0, 0, 0.7);
+    text-align: center;
+    position:absolute;
+     top:0%;
+     left:0%;
+}
+
+.content p {
+    font-size: 25px;
+    margin:10px;
+    letter-spacing: 3px;
+    color:purple;
+}
+
+.content h1{
+    font-size:60px;
+    text-transform: uppercase;
+    color:#fff;
+    padding-top:10%;
+}
+
+.space-row{
+    height:120px;
+}
+
+
+#go-to-music{
+     position:absolute;
+     bottom:2%;
+}
+
+form {
+    display: inline-block;
+}
+
+input[type=text] {
+    width: 130px;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #EEAD92;
+     background-repeat: no-repeat;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    height:35px;
+    outline: none;
+}
+
+input[type=text]:focus {
+    width: 200px; 
+}
+
+
+.two-sides{
+/*    background-color: blue;
+*/    height:400px;
+      z-index: 1;
+}
+/*.space{
+background-color:black;
+height:80px;
+}*/
+
+.player-body{
+    height:400px;
+    overflow: hidden;
+/*    background-color: red;
+*/
+
+}
+.player-head{
+    margin-top: 80px;
+    height:10px;
+}
+tr{
+    text-align: left;
+}
+
+section{
+    margin:0px;
+    padding:0px;
+}
+
+.header-container{
+    height:100%;
+    width:100%;
+}
+
+.bg-icon{
+    cursor: pointer;
+    width: 15px; 
+    height:15px;
+    z-index:10;
+}
+
+.bg{
+    margin:0px;
+    padding:0px;
+}
+.song-cover{
+    width:100%;
+    max-width: 300px;
+    max-height:350px;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+.player-list{
+    height:400px;
+    padding:10px;
+}
+
+.radial-gradient {
+    background-image: radial-gradient(#EEAD92, #6018DC);
+}
+table, th, td
+{
+  border: 0 !important;
+}
+
+i { cursor:pointer; float:left;}
+
+.control-bar{
+
+    width:100%;
+    height:85px;
+    padding:0px;
+}
+
+.direction-arrow{
+    margin-top:30px;
+}
+
+#playpausebtn{
+    margin-top:25px;
+}
+div .right-control-bar{
+    height:100%;
+    padding:10px;
+}
+#song_name{
+    height:10px;
+    font-family: 'Dancing Script', cursive;
+}
+
+#mutebtn, #volumebtn{
+    margin-top:20px;
+}
+#volumebtn{
+    margin-left:40%;
+}
+
+.timebox{
+   text-align:center;
+   height:25px;
+   margin-top:15px;
+}
+progress{
+    margin-left:2px;
+    padding:0px;
+}
+.middle-control-bar{
+    height:100%;
+    padding: 2px;
+    text-align:center;
+}
+input{
+    outline: none;
+    margin-bottom:20px;
+
+}
+
+
+.comments{
+    float:left;
+    margin:10px;
+}
+
+.container-box{
+    text-align: left;
+    padding:15px;
+/*    background-color: yellow;
+*/}
+
+.username-box{
+    float:left;
+    background-color: red;
+}
+
+
+
