@@ -1,15 +1,28 @@
 
 
 
-<h1>Home </h1>
+<h1>Home aaa</h1>
 
 
 <?php
 		require_once './DatabaseAdaptor.php';
 		session_start();			
+		
+
+		if( isset($_POST['comment-submit'])){
+				$author = $_POST['author'];
+				$comments= $_POST['comments'];
+				$myDatabaseFunctions->add_message($comments,$author);
+				// if($result){
+				header('Location: index.php#services');
+				// }else{
+				// 	$_SESSION['message'] ="Something is wrong can't leave your message now";
+				// 	header('Location: index.php');
+				// }
+		}
+
 		if(isset($_POST['register'])){	
 			$username = $_POST['username'];
-
 			$password = $_POST['password'];
 			$email = $_POST['email'];
 			$result = $myDatabaseFunctions->register_verify($username,$password,$email);
@@ -43,28 +56,21 @@
 			}
 		}
 
-		if(  isset($_POST['message-board']) && isset($_SESSION['username'])){
-				$message = $_POST['message-board'];
-				$username = $_SESSION['username'];
-				$result = $myDatabaseFunctions->add_message($message, $username);
-				if($result){
-					header("Location: index.php");
-				}else
-					header("Location: qqq.php");
-		}
+		
 
-		if(  isset($_POST['action']) && isset($_POST['ID']) ){
+
+		elseif(  isset($_POST['action']) && isset($_POST['ID']) ){
 				$action = $_POST['action'];
 				$id = $_POST['ID'];
 				if($action === 'increase' ){
 					 // $myDatabaseFunctions->raiseRating($ID);
 					$myDatabaseFunctions->raiseRating($id);
-					header("Location: index.php");
+					header("Location: index.php#services");
 				}
 
 				if ($action ==='decrease'){
 					$myDatabaseFunctions->lowerRating($id);
-					header("Location: index.php");
+					header("Location: index.php#services");
 				}
 
 		}

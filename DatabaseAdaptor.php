@@ -58,9 +58,7 @@ class DatabaseAdaptor {
 		$stmt = $this->DB->prepare("INSERT INTO messages (added, message, username, liked, disliked, flagged) values (now(), :message, :username,0, 0, 'f')");
 		$stmt->bindParam('message', $message);
 		$stmt->bindParam('username', $username);
-		if($stmt->execute())
-			return true;
-		else return false;
+		$stmt->execute();
 	}
 
 	public function getQuotesAsArray(){

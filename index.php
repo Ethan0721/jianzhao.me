@@ -76,7 +76,7 @@ session_start();
                 
                 <?php if (isset($_SESSION['alive']) && $_SESSION['alive']==="YES" ) :  ?>
                      <form id = "logout" action = "logout.php" method = "get">
-                    <button class="btn btn-warning" name = "logout" >Log out </button>
+                        <button class="btn btn-warning" name = "logout" >Log out </button>
                     </form>
                 <?php endif; ?>
                 <?php 
@@ -127,7 +127,7 @@ session_start();
     <!-- music zone containter -->
     <div class ="container-fluid ">
         <div class="row">
-             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"> 
+             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 music-search "> 
                     <input type="text" class="glyphicon glyphicon-search" placeholder="not supported yet">
             </div> 
             <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"> 
@@ -210,57 +210,122 @@ session_start();
     $arrayOfMessage = $myDatabaseFunctions->getQuotesAsArray();
 ?>
     <section id="services" class="services-section">
-        <div class="container">
-            <div class="row">
-<!--                 <div class="col-lg-11">
- -->                <h1>Leave Your Words</h1>
-                    <div class = 'board'>
-<!--                         <div class = "row">
- -->                      <div class  = "comments"> <strong>COMMENTS* <?= count($arrayOfMessage) ?></strong></div><br>
-                            <form class="comments" action = "controller.php" method = "post">
-                                 <textarea id = "message-board" name = "message-board" cols = "80" rows = "3" placeholder = "Please log in leave your words"></textarea>
+                
 
-                                <?php if(isset($_SESSION['username']) && $_SESSION['username'] != "") { 
-                                    
-                                echo "<input type = 'submit'  name = 'submit' value = 'comments'>"; } ?>    
-                            </form>
+        <div id = "container-fluid">
+        <div class = "comments-header" ><h1>Message Board</h1> </div>
+         <div id = "words">
+          <p>Shoot your words anything you would like to share with me</p>
+          <p>About your life, school, marrige, work...</p>
+          <p>I would like to listen</p>
+          <p>But wont't help</p></div>
 
-                            <div class = "col-md-12">
-                                <div class = "container-box">
-                            <?php 
-                            foreach ($arrayOfMessage as $message) { ?>
-                                <div class = "message-box">  
-                                    <div class = "username-box">&nbsp; <strong> <?= $message['username']." / ". $message['added']?> </strong>
-                                    </div><br> <br>
-                                    <div class = messages>
-                                        <?= '"'.$message['message'].'"' ?>
-                                    </div><br>
-                                    
-                                   
-                                    <form action = "controller.php " method  = "post">
-                                        <input type = "hidden" name = "ID" value = "<?= $message['id'] ?>"  > &nbsp;  &nbsp;
-                                        <span class = "rating" > 
-                                        <?php  
-                                            echo $message['liked']; 
-                                        ?>
-                                        </span>
-                                        <button class = "fa fa-thumbs-up" name = "action" value = "increase"></button>
-                                        <button class = "fa fa-thumbs-down" name = "action" value = "decrease"></button>&nbsp;&nbsp;&nbsp;
-                                        <span class = "rating" > 
-                                        <?php  
-                                            echo $message['disliked']; 
-                                        ?>
-                                        </span>
-                               </form></br></br>
+            <!--  TOP Users Comments area -->
+
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8 comment-board1">
+                            
+                        <div class = "row">
+                            <div class = " col-xs-12 col-sm-12 col-md-12">
+<!--                             <img src = "bg/jiafeimao.jpg" alt="" width="400px" height="300px">
+ --><!--                     <div class = "comment-text">COMMENTS*</div>
+ -->        
+                    <form id ="comment-form" action = "controller.php" method="post">
+                    
+                        <div class="form-group">
+                            <label for="comment">COMMENTS:</label>
+                            <textarea name ="comments" class="form-control" rows="5" id="comment" required="required"></textarea>
+                        </div>
+                        <div class="form-group">
+                                <div clas = "row">
+                                    <input class = "col-xs-12 col-sm-5 col-md-5 col-lg-5" type="text" class="form-control" id="author" placeholder="*Nick name" name="author" required="required">
+                                    <button class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 comment-submit" name = "comment-submit" type="submit" value = "comment-submit" class="btn btn-default">Submit</button>
+                                    <input class = "col-xs-12 col-sm-5 col-md-5 col-lg-5" type="email" class="form-control" id="eamil" placeholder="Enter email" name="pwd">
                                 </div>
+                        </div>
+                    </form>
+                        </div>
+                        </div>
+                              <!--   <form  action = "controller.php"  class="form-control" method = "post">
+                                    <textarea id = "message-board" name = "messageBoard" rows = "6" placeholder = "Add a public Comment" onKeyPress="return ValidateAlpha(event);" onblur="toUpper(this.value, this.id);" ></textarea>
+                                </form> -->
+                             <!--  </div>
+                             </div>   -->  
+                    </div>      
+                    <div class="col-xs-4 col-sm-4 col-md-4 comment-board2">  </div> 
+                    
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-8 col-sm-8 col-md-8 comment-board3">
+                             <label id = "coments-count">| ToTal COMMENTS* <?= count($arrayOfMessage) ?></label>
+
+                             <div class = "comment-users">
+                            <?php 
+                            
+                             foreach ($arrayOfMessage as $message) { ?>
+                                <div class = "message-box">  
+                                    <div class = "user-info">
+                                        <span class = "user-name"><?= $message['username'] ?></span><br/> 
+                                        <span class = "user-time"><?= $message['added'] ?></span> 
+                                    </div></br>
+                                    
+                                    <div class = "messages">
+                                        <?= $message['message']?>
+                                    </div><br>
+                                       
+                             
+                            </div>
                                 <?php 
                                     }  
-                                ?></div><br>
-     
+                                ?>
+
+
+
+                             </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 comment-board4 ">  </div> 
                     </div>
-                </div>
-            </div>
-        </div>
+
+
+
+
+                    
+                   
+<!--                     <div clas = "clefix"></div>
+ -->                    
+                  
+       
+<!--                         <div id = "comments_board">
+                            <div class = "sub-header">发表评论</div>
+                            
+                            <div class = "comments-form">
+                                <form  action = "controller.php" method = "post">
+                                    <textarea id = "message-board" name = "messageBoard" cols = "60" rows = "4" placeholder = "Add a public Comment"></textarea>
+                                </form>
+                            </div>
+                        </div>
+                        <div class = "right-board"></div>
+                        
+                        <div id = "comments-info">
+                            <input class = "text-block" type = "text" name = "author" size = "25" id = "author" placeholder="*nick name">
+                            <input class = "text-block" type = "email" name = "email" size = "25" id = "email" placeholder="email address">        
+                        </div>
+                        
+                        <div id= "comments-submit" >
+                            <input type = 'submit'  name = 'comment-submit' value = 'comments'> 
+                        </div>
+                        
+                        <div id = "coments-count"><strong>COMMENTS* <?= count($arrayOfMessage) ?></strong></div>
+                    </div>  -->    
+           
+        <!--  BOTTOM Users Comments area -->
+               <!--  <div id = "user-comments">
+                
+
+                </div>    --> 
+
+            </div>    
+                      
     </section>
 
 
